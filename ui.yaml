@@ -1,0 +1,2441 @@
+views:
+  - theme: Backend-selected
+    path: home
+    icon: mdi:home
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: conditional
+                conditions:
+                  - entity: lock.sienkiewicza
+                    state: unlocked
+                card:
+                  show_name: true
+                  show_icon: true
+                  type: button
+                  tap_action:
+                    action: call-service
+                    service: lock.lock
+                    data: {}
+                    target:
+                      entity_id: lock.sienkiewicza
+                  entity: lock.sienkiewicza
+                  icon: mdi:door-open
+                  name: Drzwi otwarte
+                  show_state: false
+                  hold_action:
+                    action: none
+              - type: conditional
+                conditions:
+                  - entity: lock.sienkiewicza
+                    state: locked
+                card:
+                  show_name: true
+                  show_icon: true
+                  type: button
+                  tap_action:
+                    action: call-service
+                    service: lock.unlock
+                    data: {}
+                    target:
+                      entity_id: lock.sienkiewicza
+                  entity: lock.sienkiewicza
+                  name: Drzwi zamknięte
+                  icon: mdi:door-closed
+                  hold_action:
+                    action: call-service
+                    service: lock.open
+                    data: {}
+                    target:
+                      entity_id: lock.sienkiewicza
+                  show_state: false
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: media_player.android_tv_192_168_1_77
+                name: Android TV
+                show_state: false
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.christmas
+                    state: 'on'
+                card:
+                  show_name: true
+                  show_icon: true
+                  type: button
+                  tap_action:
+                    action: toggle
+                  entity: light.xmas_tree
+                  name: Choinka
+                  icon: mdi:pine-tree
+                  show_state: false
+              - type: conditional
+                conditions:
+                  - entity: input_boolean.christmas
+                    state: 'on'
+                card:
+                  show_name: true
+                  show_icon: true
+                  type: button
+                  tap_action:
+                    action: call-service
+                    service: script.christmas_song
+                    data: {}
+                    target: {}
+                  hold_action:
+                    action: call-service
+                    service: media_player.turn_off
+                    data: {}
+                    target:
+                      entity_id: media_player.livingroom
+                  name: Christmas songs
+                  icon: mdi:snowflake
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.nspanelblue_relay_2
+                icon: ''
+                name: Stół
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.nspanelblue_relay_1
+                icon: ''
+                name: Pokój
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.bathroom
+                name: Łazienka
+                icon: ''
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.kitchen_led
+                name: Kuchnia
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.sofa
+                name: Sofa
+                icon: ''
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.dgm
+                name: Sypialnia
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_livingroom
+                entity: script.clean_livingroom
+                name: Pokój
+                icon: mdi:sofa-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_kitchen
+                  service_data: {}
+                  target: {}
+                entity: script.clean_kitchen
+                name: Kuchnia
+                icon: mdi:fridge-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_bedroom
+                entity: script.clean_bedroom
+                name: Sypialnia
+                icon: mdi:bed-king-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_hall
+                entity: script.clean_hall
+                name: Przedpokój
+                icon: mdi:wardrobe-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_cat
+                entity: script.clean_cat
+                name: Kuweta
+                icon: mdi:cat
+          - type: horizontal-stack
+            cards:
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: vacuum.start
+                  service_data: {}
+                  target:
+                    entity_id: vacuum.roborock_s5
+                entity: vacuum.roborock_s5
+                name: Start
+                show_state: false
+                icon: mdi:play-circle-outline
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: vacuum.stop
+                  service_data: {}
+                  target:
+                    entity_id: vacuum.roborock_s5
+                entity: vacuum.roborock_s5
+                name: Stop
+                show_state: false
+                show_name: true
+                icon: mdi:stop-circle-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: vacuum.return_to_base
+                  service_data: {}
+                  target:
+                    entity_id: vacuum.roborock_s5
+                entity: vacuum.roborock_s5
+                name: Powrót
+                show_state: false
+                icon: mdi:backup-restore
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.go_to_waste_bin
+                entity: script.go_to_waste_bin
+                name: Do kosza
+                show_state: false
+      - type: custom:weather-card
+        entity: weather.pabianice
+        current: true
+        details: true
+        forecast: true
+        hourly_forecast: false
+        forecast_days: '5'
+        number_of_forecasts: '7'
+      - cards:
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kettle_start
+                name: Czajnik
+                show_state: false
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kettle_heat_preservation
+                name: Mleko
+                icon: mdi:baby-bottle
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: fan.kitchen_fan
+                icon: mdi:fan
+                name: Okap
+                show_state: false
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: fan.smartmi
+                name: Wentylator
+                icon: mdi:ceiling-fan
+                show_state: false
+          - type: conditional
+            conditions:
+              - entity: sensor.kettle_status
+                state: heating
+            card:
+              type: entities
+              entities:
+                - entity: sensor.kettle_current_temperature
+                - entity: number.kettle_temperature
+                - entity: number.kettle_temperature_after_boiling
+                - entity: number.kettle_heat_preservation_time
+                - entity: sensor.kettle_status
+          - type: conditional
+            conditions:
+              - entity: fan.smartmi
+                state: 'on'
+            card:
+              type: entities
+              entities:
+                - entity: number.smartmi_oscillation_angle
+              state_color: true
+              show_header_toggle: false
+        type: vertical-stack
+      - type: custom:mini-media-player
+        entity: media_player.livingroom
+        volume_stateless: false
+        volume_step: '5'
+        max_volume: '100'
+        min_volume: '10'
+        artwork: full-cover
+        source: full
+        sound_mode: full
+        info: short
+        name: Pokój
+      - type: custom:mini-media-player
+        entity: media_player.bedroom
+        volume_stateless: false
+        volume_step: '5'
+        max_volume: '100'
+        min_volume: '10'
+        artwork: full-cover
+        source: full
+        sound_mode: full
+        info: short
+        name: Sypialnia
+      - type: custom:mini-media-player
+        entity: media_player.android_tv_192_168_1_77
+        artwork: full-cover
+        source: full
+        sound_mode: full
+        name: TV
+        icon: mdi:television-classic
+      - type: conditional
+        conditions:
+          - entity: vacuum.roborock_s5
+            state_not: docked
+        card:
+          show_state: true
+          show_name: true
+          camera_view: live
+          type: picture-entity
+          entity: counter.clean
+          camera_image: camera.roborock
+      - type: conditional
+        conditions:
+          - entity: fan.smartmi
+            state: 'on'
+        card:
+          entity: fan.smartmi
+          type: custom:fan-xiaomi
+          force_sleep_mode_support: true
+  - theme: Backend-selected
+    icon: mdi:television-classic
+    path: tv
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+      - user: 6671076d5dbe4f13a4891444e801d1da
+    badges: []
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.android_tv_192_168_1_77
+        artwork: full-cover
+        source: full
+        sound_mode: full
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.tv
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: media_player.android_tv_192_168_1_77
+                name: Android TV
+                show_state: false
+              - type: light
+                entity: light.first_led_hardware_instance
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.tv_box
+                icon: ''
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.ambilight
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: light.first_led_hardware_instance
+                tap_action:
+                  action: call-service
+                  service: script.ambilight_usb_capture
+                  target: {}
+                icon: mdi:hdmi-port
+                name: HDMI capture
+      - type: entities
+        entities:
+          - entity: sensor.tv_power
+          - entity: sensor.tv_box_power
+          - entity: sensor.ambilight_power
+          - type: divider
+          - entity: sensor.tv_energy
+          - entity: sensor.tv_box_energy
+          - entity: sensor.ambilight_energy
+          - type: divider
+          - entity: switch.tv
+            icon: mdi:television-classic
+          - entity: switch.tv_box
+            icon: mdi:audio-video
+          - entity: switch.ambilight
+            icon: mdi:raspberry-pi
+            name: Raspberry Pi
+          - entity: light.first_led_hardware_instance
+        title: tv
+        state_color: true
+        show_header_toggle: false
+      - type: custom:mini-media-player
+        entity: media_player.android_tv_box
+        artwork: full-cover
+        source: full
+        sound_mode: full
+      - type: entities
+        entities:
+          - entity: automation.cast_ha_on_nest_hub
+          - entity: switch.cast_homeassistant
+      - type: entity
+        entity: media_player.android_tv_box
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: call-service
+              service: shell_command.cast_homeassistant
+              data: {}
+              target: {}
+            entity: ''
+            show_state: false
+            name: Cast HA
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: call-service
+              service: shell_command.cast_stop
+              data: {}
+              target: {}
+            entity: ''
+            name: Stop cast HA
+      - type: entity
+        entity: media_player.android_tv_192_168_1_77
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.tv_box_power
+        hours_to_show: 1
+        points_per_hour: 480
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.tv_power
+        hours_to_show: 1
+        points_per_hour: 480
+      - type: history-graph
+        entities:
+          - entity: media_player.android_tv_192_168_1_77
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.ambilight_power
+        hours_to_show: 1
+        points_per_hour: 480
+      - show_state: true
+        show_name: true
+        camera_view: live
+        type: picture-entity
+        entity: camera.first_led_hardware_instance
+        camera_image: camera.first_led_hardware_instance
+  - theme: Backend-selected
+    icon: mdi:weather-partly-snowy-rainy
+    path: weather
+    badges: []
+    cards:
+      - type: custom:weather-card
+        entity: weather.sienkiewicza
+        number_of_forecasts: '5'
+      - show_current: true
+        show_forecast: true
+        entity: weather.pabianice
+        name: Pabianice
+        type: weather-forecast
+        secondary_info_attribute: wind_speed
+      - cards:
+          - entities:
+              - entity: sensor.sienkiewicza_caqi
+                name: Air quality
+              - entity: sensor.sienkiewicza_temperature
+                name: Temperature
+              - entity: sensor.sienkiewicza_humidity
+                name: Humidity
+              - entity: sensor.sienkiewicza_pressure
+                name: Pressure
+              - entity: sensor.sienkiewicza_pm1
+                name: PM 1
+              - entity: sensor.sienkiewicza_pm2_5
+              - entity: sensor.sienkiewicza_pm10
+            show_header_toggle: false
+            title: Airly
+            icon: mdi:weather-partly-snowy-rainy
+            type: entities
+            state_color: true
+          - cards:
+              - entity: sensor.sienkiewicza_caqi
+                max: 100
+                min: 0
+                name: Air quality
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 75
+                type: gauge
+                unit: '%'
+              - entity: sensor.sienkiewicza_pm1
+                name: PM 1
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 100
+                type: gauge
+                unit: µg/m³
+                min: 0
+                max: 100
+              - entity: sensor.sienkiewicza_pm2_5
+                name: PM 2.5
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 100
+                type: gauge
+                unit: µg/m³
+                min: 0
+                max: 100
+              - entity: sensor.sienkiewicza_pm10
+                name: PM 10
+                severity:
+                  green: 0
+                  yellow: 50
+                  red: 100
+                type: gauge
+                unit: µg/m³
+                max: 100
+            type: horizontal-stack
+          - type: horizontal-stack
+            cards:
+              - entity: sensor.ikea_iaq
+                type: gauge
+                unit: µg/m³
+                min: 0
+                max: 50
+                name: IAQ
+                severity:
+                  green: 10
+                  yellow: 25
+                  red: 35
+              - entity: sensor.ikea_pm_2_5um
+                type: gauge
+                unit: µg/m³
+                min: 0
+                max: 500
+                name: PM 2.5
+                severity:
+                  green: 5
+                  yellow: 35
+                  red: 85
+              - entity: sensor.ikea_co2
+                type: gauge
+                unit: ppm
+                min: 400
+                max: 2100
+                name: CO2
+                severity:
+                  green: 600
+                  yellow: 1000
+                  red: 1500
+              - entity: sensor.ikea_breath_voc
+                type: gauge
+                unit: ppm
+                min: 0
+                max: 2
+                name: VOC
+                severity:
+                  green: 0.2
+                  yellow: 0.5
+                  red: 1
+          - type: entities
+            entities:
+              - entity: sensor.ikea_temperature
+              - entity: sensor.ikea_humidity
+              - entity: sensor.ikea_pressure
+              - entity: sensor.ikea_dew_point
+              - entity: sensor.ikea_pm_2_5um
+              - entity: sensor.ikea_iaq
+              - entity: sensor.ikea_co2
+              - entity: sensor.ikea_breath_voc
+              - entity: sensor.ikea_iaq_status
+              - entity: sensor.ikea_altitude
+            state_color: true
+            show_header_toggle: false
+        type: vertical-stack
+      - type: picture-entity
+        camera_image: camera.icm_meteo
+        entity: camera.icm_meteo
+        show_name: false
+        show_state: false
+  - theme: Backend-selected
+    path: outdoor
+    icon: mdi:crane
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.sonoff_1000a48132
+              - type: conditional
+                conditions:
+                  - entity: timer.gate
+                    state: idle
+                card:
+                  show_name: true
+                  show_icon: true
+                  type: button
+                  tap_action:
+                    action: call-service
+                    service: cover.open_cover
+                    target:
+                      entity_id:
+                        - cover.brama
+                    data: {}
+                  entity: timer.gate
+                  show_state: false
+                  icon: mdi:gate
+                  hold_action:
+                    action: more-info
+              - type: conditional
+                conditions:
+                  - entity: timer.gate
+                    state: active
+                card:
+                  show_name: true
+                  show_icon: true
+                  type: button
+                  tap_action:
+                    action: call-service
+                    service: cover.open_cover
+                    target:
+                      entity_id:
+                        - cover.brama
+                    data: {}
+                  entity: timer.gate
+                  show_state: false
+                  icon: mdi:gate-open
+                  hold_action:
+                    action: more-info
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.sonoff_1000987456
+                name: 'Garaż '
+                icon: ''
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.halogen
+                name: Halogen 15W
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.socket_1
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: fan.nagrzewnica
+                icon: mdi:radiator
+                name: Halogen 50W
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.buld_red_socket_1
+                name: Bulb red
+          - type: conditional
+            conditions:
+              - entity: switch.sonoff_1000a48132
+                state: 'on'
+            card:
+              type: entities
+              entities:
+                - entity: timer.hydrofor
+          - type: conditional
+            conditions:
+              - entity: timer.gate
+                state_not: idle
+            card:
+              type: entities
+              entities:
+                - entity: timer.gate
+              state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.aubess_smart_socket_20a_em_current
+            name: Current
+          - entity: sensor.aubess_smart_socket_20a_em_power
+            name: Power
+          - entity: sensor.aubess_smart_socket_20a_em_2_current
+            name: Current
+          - entity: sensor.aubess_smart_socket_20a_em_2_power
+            name: Power
+          - entity: sensor.termometr_battery
+          - entity: sensor.termometr_humidity
+          - entity: sensor.termometr_temperature
+          - entity: sensor.rozana_temperature_2
+          - entity: weather.sienkiewicza
+          - entity: sensor.sienkiewicza_temperature
+        state_color: true
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.termometr_temperature
+          - entity: sensor.rozana_temperature_2
+          - entity: sensor.sienkiewicza_temperature
+        hours_to_show: 96
+        points_per_hour: 1
+  - theme: Backend-selected
+    icon: mdi:scale-bathroom
+    path: scale
+    badges: []
+    cards:
+      - type: custom:body-miscale-card
+        entity: bodymiscale.kacper
+        model: true
+        show_name: true
+        show_states: true
+        show_attributes: true
+        show_toolbar: true
+        show_body: true
+        show_buttons: true
+        image: /local/img/miscale.jpg
+        theme: false
+      - type: entities
+        entities:
+          - entity: binary_sensor.mi_scale
+          - entity: sensor.mi_scale_impedance
+          - entity: sensor.mi_scale_weight
+          - type: attribute
+            entity: bodymiscale.kacper
+            attribute: ideal
+            name: Ideal weight
+            icon: mdi:weight-kilogram
+            suffix: kg
+          - type: attribute
+            entity: bodymiscale.kacper
+            attribute: height
+            name: Height
+            icon: mdi:tape-measure
+            suffix: cm
+          - type: attribute
+            entity: bodymiscale.kacper
+            attribute: bmi
+            name: BMI
+            icon: mdi:scale-unbalanced
+          - type: attribute
+            entity: bodymiscale.kacper
+            attribute: bmi_label
+            name: BMI label
+          - type: attribute
+            entity: bodymiscale.kacper
+            attribute: visceral_fat
+            name: Visceral fat
+            icon: mdi:hamburger
+        state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.active_kilocalories
+          - entity: sensor.active_time
+          - entity: sensor.activity_stress_duration
+          - entity: sensor.avg_stress_level
+          - entity: sensor.awake_duration
+          - entity: sensor.bmr_kilocalories
+          - entity: sensor.body_battery_charged
+          - entity: sensor.body_battery_drained
+          - entity: sensor.body_battery_highest
+          - entity: sensor.body_battery_lowest
+          - entity: sensor.body_battery_most_recent
+          - entity: sensor.daily_step_goal
+          - entity: sensor.floors_ascended
+          - entity: sensor.high_stress_duration
+          - entity: sensor.low_stress_duration
+          - entity: sensor.max_heart_rate
+          - entity: sensor.max_stress_level
+          - entity: sensor.medium_stress_duration
+          - entity: sensor.min_heart_rate
+          - entity: sensor.next_alarm_time
+          - entity: sensor.rest_stress_duration
+          - entity: sensor.resting_heart_rate
+          - entity: sensor.sedentary_time
+          - entity: sensor.sleep_duration
+          - entity: sensor.sleeping_time
+          - entity: sensor.total_distance_mtr
+          - entity: sensor.total_kilocalories
+          - entity: sensor.total_steps
+          - entity: sensor.total_stress_duration
+          - entity: sensor.uncat_stress_duration
+        title: Garmin Connect
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.mi_scale_weight
+        hours_to_show: 720
+        points_per_hour: 1
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.kacper_bmi
+        hours_to_show: 720
+        points_per_hour: 1
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.kacper_visceral_fat
+        hours_to_show: 720
+        points_per_hour: 1
+  - theme: Backend-selected
+    icon: mdi:vacuum-outline
+    path: vacuum
+    badges: []
+    cards:
+      - buttons:
+          spot: false
+          locate:
+            icon: mdi:target
+          waste_bin:
+            icon: mdi:trash-can
+            label: waste bin
+            service: script.go_to_waste_bin
+        entity: vacuum.roborock_s5
+        image: /local/img/vacuum.png
+        type: custom:xiaomi-vacuum-card
+        vendor: xiaomi
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: vacuum.start
+                  service_data: {}
+                  target:
+                    entity_id: vacuum.roborock_s5
+                entity: vacuum.roborock_s5
+                name: Start
+                show_state: false
+                icon: mdi:play-circle-outline
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: vacuum.stop
+                  service_data: {}
+                  target:
+                    entity_id: vacuum.roborock_s5
+                entity: vacuum.roborock_s5
+                name: Stop
+                show_state: false
+                show_name: true
+                icon: mdi:stop-circle-outline
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: vacuum.return_to_base
+                  service_data: {}
+                  target:
+                    entity_id: vacuum.roborock_s5
+                entity: vacuum.roborock_s5
+                name: Return
+                show_state: false
+                icon: mdi:backup-restore
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.go_to_waste_bin
+                entity: script.go_to_waste_bin
+                name: Waste bin
+                show_state: false
+          - type: horizontal-stack
+            cards:
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_livingroom
+                entity: script.clean_livingroom
+                name: Livingroom
+              - type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_kitchen
+                  service_data: {}
+                  target: {}
+                entity: script.clean_kitchen
+                name: Kitchen
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_bedroom
+                entity: script.clean_bedroom
+                name: Bedroom
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_hall
+                entity: script.clean_hall
+                name: Hall
+                icon: mdi:wardrobe
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: script.clean_cat
+                entity: script.clean_cat
+                name: Catroom
+                icon: mdi:cat
+      - type: custom:xiaomi-vacuum-map-card
+        map_source:
+          camera: camera.roborock
+        calibration_source:
+          camera: true
+        entity: vacuum.roborock_s5
+        vacuum_platform: default
+        tiles:
+          - tile_id: status
+            entity: vacuum.roborock_s5
+            label: Status
+            attribute: status
+            icon: mdi:robot-vacuum
+            translations:
+              starting: Starting
+              charger disconnected: Charger disconnected
+              idle: Idle
+              remote control active: Remote control active
+              cleaning: Cleaning
+              returning home: Returning home
+              manual mode: Manual mode
+              charging: Charging
+              charging problem: Charging problem
+              paused: Paused
+              spot cleaning: Spot cleaning
+              error: Error
+              shutting down: Shutting down
+              updating: Updating
+              docking: Docking
+              going to target: Going to target
+              zoned cleaning: Zoned cleaning
+              segment cleaning: Segment cleaning
+              emptying the bin: Emptying the bin
+              charging complete: Charging complete
+              device offline: Device offline
+          - tile_id: battery_level
+            entity: vacuum.roborock_s5
+            label: Battery
+            attribute: battery_level
+            icon: mdi:battery-charging-100
+            unit: '%'
+          - tile_id: fan_speed
+            entity: vacuum.roborock_s5
+            label: Fan speed
+            attribute: fan_speed
+            icon: mdi:fan
+            translations:
+              silent: Silent
+              standard: Standard
+              medium: Medium
+              turbo: Turbo
+              auto: Auto
+              gentle: Gentle
+          - tile_id: sensor_dirty_left
+            label: Sensors left
+            unit: h
+            multiplier: 0.0002777777777777778
+            hold_action:
+              action: call-service
+              service: vacuum.send_command
+              confirmation: true
+              service_data:
+                command: reset_consumable
+                params: sensor_dirty_time
+                entity_id: vacuum.roborock_s5
+            entity: sensor.roborock_s5_sensor_dirty_left
+            icon: mdi:eye-outline
+            precision: 0
+            translations: {}
+          - tile_id: filter_left
+            label: Filter left
+            unit: h
+            multiplier: 0.0002777777777777778
+            hold_action:
+              action: call-service
+              service: vacuum.send_command
+              confirmation: true
+              service_data:
+                command: reset_consumable
+                params: filter_work_time
+                entity_id: vacuum.roborock_s5
+            entity: sensor.roborock_s5_filter_left
+            icon: mdi:air-filter
+            precision: 0
+            translations: {}
+          - tile_id: main_brush_left
+            label: Main brush left
+            unit: h
+            multiplier: 0.0002777777777777778
+            hold_action:
+              action: call-service
+              service: vacuum.send_command
+              confirmation: true
+              service_data:
+                command: reset_consumable
+                params: main_brush_work_time
+                entity_id: vacuum.roborock_s5
+            entity: sensor.roborock_s5_main_brush_left
+            icon: mdi:brush
+            precision: 0
+            translations: {}
+          - tile_id: side_brush_left
+            label: Side brush left
+            unit: h
+            multiplier: 0.0002777777777777778
+            hold_action:
+              action: call-service
+              service: vacuum.send_command
+              confirmation: true
+              service_data:
+                command: reset_consumable
+                params: side_brush_work_time
+                entity_id: vacuum.roborock_s5
+            entity: sensor.roborock_s5_side_brush_left
+            icon: mdi:brush
+            precision: 0
+            translations: {}
+        map_modes:
+          - name: Rooms
+            icon: mdi:floor-plan
+            run_immediately: false
+            coordinates_rounding: true
+            selection_type: ROOM
+            max_selections: 999
+            repeats_type: NONE
+            max_repeats: 1
+            service_call_schema:
+              service: xiaomi_miio.vacuum_clean_segment
+              service_data:
+                segments: '[[selection]]'
+                entity_id: '[[entity_id]]'
+            predefined_selections:
+              - id: '1'
+                icon:
+                  name: mdi:bed-king
+                  x: 23675
+                  'y': 24500
+                label:
+                  text: Bedroom
+                  x: 23675
+                  'y': 24500
+                  offset_y: 35
+                outline:
+                  - - 22300
+                    - 23250
+                  - - 25050
+                    - 23250
+                  - - 25050
+                    - 25750
+                  - - 22300
+                    - 25750
+              - id: '16'
+                icon:
+                  name: mdi:fridge
+                  x: 26700
+                  'y': 26225
+                label:
+                  text: Kitchen
+                  x: 26700
+                  'y': 26225
+                  offset_y: 35
+                outline:
+                  - - 25250
+                    - 24900
+                  - - 28150
+                    - 24900
+                  - - 28150
+                    - 27550
+                  - - 25250
+                    - 27550
+              - id: '17'
+                icon:
+                  name: mdi:cat
+                  x: 20650
+                  'y': 27550
+                label:
+                  text: Catroom
+                  x: 20650
+                  'y': 27550
+                  offset_y: 35
+                outline:
+                  - - 19700
+                    - 26950
+                  - - 21600
+                    - 26950
+                  - - 21600
+                    - 28150
+                  - - 19700
+                    - 28150
+              - id: '18'
+                icon:
+                  name: mdi:sofa
+                  x: 26725
+                  'y': 24100
+                label:
+                  text: Livingroom
+                  x: 26725
+                  'y': 24100
+                  offset_y: 35
+                outline:
+                  - - 25300
+                    - 23250
+                  - - 28150
+                    - 23250
+                  - - 28150
+                    - 24950
+                  - - 25300
+                    - 24950
+              - id: '19'
+                icon:
+                  name: mdi:wardrobe
+                  x: 24200
+                  'y': 27000
+                label:
+                  text: Hall
+                  x: 24200
+                  'y': 27000
+                  offset_y: 35
+                outline:
+                  - - 21650
+                    - 25700
+                  - - 26750
+                    - 25700
+                  - - 26750
+                    - 28300
+                  - - 21650
+                    - 28300
+            variables: {}
+        icons:
+          - icon: mdi:play
+            conditions:
+              - entity: vacuum.roborock_s5
+                value_not: cleaning
+              - entity: vacuum.roborock_s5
+                value_not: error
+              - entity: vacuum.roborock_s5
+                value_not: returning
+            tooltip: Start
+            tap_action:
+              action: call-service
+              service: vacuum.start
+              service_data:
+                entity_id: vacuum.roborock_s5
+          - icon: mdi:pause
+            conditions:
+              - entity: vacuum.roborock_s5
+                value_not: docked
+              - entity: vacuum.roborock_s5
+                value_not: idle
+              - entity: vacuum.roborock_s5
+                value_not: error
+              - entity: vacuum.roborock_s5
+                value_not: paused
+            tooltip: Pause
+            tap_action:
+              action: call-service
+              service: vacuum.pause
+              service_data:
+                entity_id: vacuum.roborock_s5
+          - icon: mdi:stop
+            conditions:
+              - entity: vacuum.roborock_s5
+                value_not: docked
+              - entity: vacuum.roborock_s5
+                value_not: idle
+              - entity: vacuum.roborock_s5
+                value_not: error
+              - entity: vacuum.roborock_s5
+                value_not: paused
+            tooltip: Stop
+            tap_action:
+              action: call-service
+              service: vacuum.stop
+              service_data:
+                entity_id: vacuum.roborock_s5
+          - icon: mdi:home-map-marker
+            conditions:
+              - entity: vacuum.roborock_s5
+                value_not: docked
+              - entity: vacuum.roborock_s5
+                value_not: returning
+            tooltip: Return to base
+            tap_action:
+              action: call-service
+              service: vacuum.return_to_base
+              service_data:
+                entity_id: vacuum.roborock_s5
+          - icon: mdi:target-variant
+            conditions:
+              - entity: vacuum.roborock_s5
+                value_not: docked
+              - entity: vacuum.roborock_s5
+                value_not: error
+              - entity: vacuum.roborock_s5
+                value_not: cleaning
+              - entity: vacuum.roborock_s5
+                value_not: returning
+            tooltip: Clean spot
+            tap_action:
+              action: call-service
+              service: vacuum.clean_spot
+              service_data:
+                entity_id: vacuum.roborock_s5
+          - icon: mdi:map-marker
+            tooltip: Locate
+            tap_action:
+              action: call-service
+              service: vacuum.locate
+              service_data:
+                entity_id: vacuum.roborock_s5
+          - icon: mdi:fan-remove
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value: Silent
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Standard
+          - icon: mdi:fan-speed-1
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value: Standard
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Medium
+          - icon: mdi:fan-speed-2
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value: Medium
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Turbo
+          - icon: mdi:fan-speed-3
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value: Turbo
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Gentle
+          - icon: mdi:waves
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value: Gentle
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Auto
+          - icon: mdi:fan-auto
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value: Auto
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Silent
+          - icon: mdi:fan-alert
+            conditions:
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value_not: Silent
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value_not: Standard
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value_not: Medium
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value_not: Turbo
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value_not: Gentle
+              - entity: vacuum.roborock_s5
+                attribute: fan_speed
+                value_not: Auto
+            tooltip: Change fan speed
+            tap_action:
+              action: call-service
+              service: vacuum.set_fan_speed
+              service_data:
+                entity_id: vacuum.roborock_s5
+                fan_speed: Silent
+      - entity: fan.smartmi
+        name: SmartMi fan
+        type: custom:fan-xiaomi
+        force_sleep_mode_support: true
+  - theme: Backend-selected
+    icon: mdi:monitor-dashboard
+    path: system
+    title: ''
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+    badges: []
+    cards:
+      - cards:
+          - color_thresholds:
+              - color: '#10A5F5'
+                value: 60
+              - color: '#008000'
+                value: 62.5
+              - color: '#FFFF00'
+                value: 65
+              - color: '#FF0000'
+                value: 70
+            entities:
+              - entity: sensor.cpu_temperature
+            hours_to_show: 1
+            points_per_hour: 60
+            type: custom:mini-graph-card
+          - color_thresholds:
+              - color: '#10A5F5'
+                value: 10
+              - color: '#008000'
+                value: 20
+              - color: '#FFFF00'
+                value: 30
+              - color: '#FF0000'
+                value: 50
+            entities:
+              - entity: sensor.processor_use
+            hours_to_show: 1
+            points_per_hour: 60
+            type: custom:mini-graph-card
+          - color_thresholds:
+              - color: '#10A5F5'
+                value: 25
+              - color: '#008000'
+                value: 50
+              - color: '#FFFF00'
+                value: 70
+              - color: '#FF0000'
+                value: 90
+            entities:
+              - entity: sensor.memory_use_percent
+              - entity: sensor.swap_use_percent
+            hours_to_show: 1
+            points_per_hour: 60
+            type: custom:mini-graph-card
+        type: vertical-stack
+      - cards:
+          - entity: sensor.processor_use
+            max: 100
+            min: 0
+            name: CPU use
+            severity:
+              green: 10
+              red: 50
+              yellow: 25
+            type: gauge
+            unit: '%'
+            needle: true
+          - entity: sensor.disk_use_percent
+            max: 100
+            min: 0
+            name: Disk use
+            severity:
+              green: 5
+              red: 50
+              yellow: 10
+            type: gauge
+            unit: '%'
+            needle: true
+          - entity: sensor.cpu_temperature
+            max: 90
+            min: 50
+            name: CPU temperature
+            severity:
+              green: 55
+              yellow: 65
+              red: 75
+            type: gauge
+            unit: °C
+            needle: true
+        type: horizontal-stack
+      - entities:
+          - entity: sensor.processor_use
+          - entity: sensor.cpu_speed
+          - entity: sensor.cpu_temperature
+          - entity: sensor.disk_free
+          - entity: sensor.disk_use
+          - entity: sensor.disk_use_percent
+          - entity: sensor.memory_free
+          - entity: sensor.memory_use
+          - entity: sensor.memory_use_percent
+          - entity: sensor.swap_use_percent
+          - entity: sensor.last_boot
+        show_header_toggle: false
+        title: Hardware
+        icon: mdi:console-network-outline
+        type: entities
+        state_color: true
+      - entities:
+          - entity: sensor.network_in_enp0s3
+          - entity: sensor.network_out_enp0s3
+          - entity: sensor.huawei_wifi_mesh_3_kib_s_sent
+          - entity: sensor.huawei_wifi_mesh_3_kib_s_received
+          - entity: sensor.huawei_wifi_mesh_3_external_ip
+        show_header_toggle: false
+        title: Network
+        icon: mdi:ip-network-outline
+        type: entities
+        state_color: true
+      - entities:
+          - entity: sensor.current_version
+            icon: mdi:home-assistant
+          - entity: sensor.home_assistant_versions
+            icon: mdi:home-assistant
+          - type: divider
+          - entity: sensor.hacs
+            name: HACS to update
+        show_header_toggle: false
+        title: Updates
+        icon: mdi:update
+        type: entities
+        state_color: true
+      - type: entities
+        entities:
+          - entity: switch.adguard_protection
+          - entity: switch.adguard_filtering
+          - entity: sensor.adguard_dns_queries_blocked_ratio
+          - entity: switch.adguard_parental_control
+        title: AdGuard Home
+        icon: mdi:shield-lock-outline
+        state_color: true
+        show_header_toggle: false
+  - theme: Backend-selected
+    path: xmas
+    icon: mdi:pine-tree
+    badges: []
+    cards:
+      - hours_to_show: 24
+        graph: line
+        type: custom:mini-graph-card
+        entities:
+          - entity: sensor.xmas_tree_illuminance
+          - entity: sensor.mi_flora_brightness
+      - hours_to_show: 24
+        graph: line
+        type: custom:mini-graph-card
+        entities:
+          - entity: sensor.xmas_tree_soil_moisture
+          - entity: sensor.mi_flora_moisture
+      - type: entities
+        entities:
+          - entity: light.xmas_tree
+            name: Tree
+            icon: mdi:pine-tree
+          - entity: sensor.xmas_tree_soil_moisture
+          - entity: sensor.xmas_tree_illuminance
+          - entity: sensor.xmas_tree_temperature_ds
+          - entity: sensor.xmas_tree_battery
+          - entity: plant.zigbee_flora
+          - type: attribute
+            entity: plant.zigbee_flora
+            attribute: problem
+            icon: mdi:pine-tree
+            name: Problem
+        state_color: true
+      - hours_to_show: 72
+        graph: line
+        type: sensor
+        entity: sensor.xmas_tree_battery
+        detail: 1
+      - hours_to_show: 24
+        graph: line
+        type: custom:mini-graph-card
+        entities:
+          - entity: sensor.xmas_tree_temperature_ds
+          - entity: sensor.mi_flora_temperature
+      - type: plant-status
+        entity: plant.mi_flora
+        name: Choinka bt
+      - type: entities
+        entities:
+          - entity: sensor.mi_flora_moisture
+          - entity: sensor.mi_flora_soil
+          - entity: sensor.mi_flora_brightness
+          - entity: sensor.mi_flora_temperature
+          - entity: plant.mi_flora
+          - type: attribute
+            entity: plant.mi_flora
+            attribute: problem
+            icon: mdi:pine-tree
+            name: Problem
+        state_color: true
+      - type: plant-status
+        entity: plant.zigbee_flora
+        name: Choinka zb
+  - theme: Backend-selected
+    path: battery
+    icon: mdi:home-battery
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+      - user: 6671076d5dbe4f13a4891444e801d1da
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - type: custom:battery-entity-row
+            entity: sensor.bathroom_motion_battery
+          - type: custom:battery-entity-row
+            entity: sensor.bathroom_temperature_battery
+          - type: custom:battery-entity-row
+            entity: sensor.4_bedroom_battery
+          - type: custom:battery-entity-row
+            entity: sensor.iphone_battery_level
+          - type: custom:battery-entity-row
+            entity: sensor.pixel_4a_battery_level
+          - type: custom:battery-entity-row
+            entity: sensor.postbox_battery
+          - type: custom:battery-entity-row
+            entity: sensor.postbox_action
+          - type: custom:battery-entity-row
+            entity: sensor.kitchen_temperature_battery
+          - entity: binary_sensor.sienkiewicza_battery_low
+            name: Door
+          - entity: sensor.xmas_tree_battery
+            name: Xmas tree
+        state_color: true
+  - theme: Backend-selected
+    path: rooms
+    icon: mdi:home-assistant
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.4_bedroom_action
+            name: Multi switch
+          - entity: script.clean_bedroom
+          - entity: media_player.bedroom
+          - entity: sensor.bedroom_temperature_temperature
+          - entity: sensor.bedroom_temperature_humidity
+          - entity: light.dgm
+        title: Bedroom
+        icon: mdi:bed-king-outline
+        state_color: true
+        show_header_toggle: false
+      - type: humidifier
+        entity: humidifier.bedroom
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.bedroom_temperature_temperature
+            hours_to_show: 24
+            points_per_hour: 60
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.bedroom_temperature_humidity
+            hours_to_show: 24
+            points_per_hour: 60
+      - type: entities
+        entities:
+          - entity: sensor.bathroom_temperature_temperature
+            name: Temperature
+          - entity: sensor.bathroom_temperature_humidity
+            name: Humidity
+          - entity: sensor.bathroom_temperature_pressure
+            name: Pressure
+          - entity: binary_sensor.bathroom_motion_occupancy
+            name: Motion
+          - entity: light.bathroom
+        title: Bathroom
+        icon: mdi:shower
+        state_color: true
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: vacuum.roborock_s5
+            name: Vacuum
+          - entity: fan.smartmi
+            name: Fan
+            icon: mdi:fan
+          - entity: media_player.livingroom
+          - entity: script.clean_livingroom
+          - entity: light.sofa
+        title: Livingroom
+        icon: mdi:sofa-outline
+        state_color: true
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: switch.kettle_start
+            name: Kettle
+          - entity: script.clean_kitchen
+          - entity: sensor.kitchen_temperature_temperature
+          - entity: sensor.kitchen_temperature_humidity
+          - entity: fan.kitchen_fan
+          - entity: light.kitchen_led
+        title: Kitchen
+        icon: mdi:fridge-outline
+        state_color: true
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: script.clean_hall
+          - entity: lock.sienkiewicza
+        title: Hall
+        state_color: true
+        show_header_toggle: false
+        icon: mdi:wardrobe-outline
+      - type: entities
+        entities:
+          - entity: switch.sonoff_1000ba3422
+          - entity: sensor.hp_neverstop_laser_100x_hpcups_3_21_2
+        title: Office
+        state_color: true
+        show_header_toggle: false
+  - theme: Backend-selected
+    path: media
+    icon: mdi:cast-audio
+    badges: []
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.bedroom
+      - type: vertical-stack
+        cards:
+          - square: true
+            columns: 5
+            type: grid
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.antyradio
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.357
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.nowy_swiat
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.meloradio
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.eska_rock
+          - square: true
+            columns: 5
+            type: grid
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.polskie_ballady
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.szanty
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.folk_kielce
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.christmas_song
+      - type: custom:mini-media-player
+        entity: media_player.livingroom
+        sound_mode: full
+        source: full
+        artwork: full-cover
+      - type: media-control
+        entity: media_player.livingroom
+      - type: custom:mini-media-player
+        entity: media_player.livingroom
+        tts:
+          platform: service
+          data:
+            service: xiaomi_miot.intelligent_speaker
+            service_data:
+              execute: true
+              silent: true
+            message_field: text
+  - theme: Backend-selected
+    path: calendar
+    icon: mdi:calendar
+    badges: []
+    cards:
+      - type: calendar
+        entities:
+          - calendar.familijne
+          - calendar.swieta_w_polsce
+          - calendar.pawelczykkacper_gmail_com
+  - theme: Backend-selected
+    icon: mdi:map-search
+    path: tracking
+    badges: []
+    cards:
+      - type: map
+        entities:
+          - entity: person.kacper
+          - entity: device_tracker.s20
+          - entity: device_tracker.sinotrack_901
+          - entity: person.martyna
+        dark_mode: false
+        default_zoom: 14
+      - type: entities
+        entities:
+          - entity: device_tracker.s20
+            secondary_info: last-updated
+            icon: ''
+            name: Škoda Roomster
+          - type: attribute
+            entity: device_tracker.s20
+            attribute: status
+            name: Status
+            icon: mdi:check-circle-outline
+          - type: attribute
+            entity: device_tracker.s20
+            attribute: motion
+            name: Motion
+            icon: mdi:motion-sensor
+          - type: attribute
+            entity: device_tracker.s20
+            attribute: speed
+            name: Speed
+            icon: mdi:speedometer
+          - type: attribute
+            entity: device_tracker.s20
+            attribute: gps_accuracy
+            name: GPS accuracy
+            icon: mdi:signal-distance-variant
+          - type: attribute
+            entity: device_tracker.s20
+            attribute: address
+            name: Adres
+            icon: mdi:map-check
+          - entity: sensor.s20_alarm
+          - entity: sensor.s20_battery
+        state_color: true
+        title: Škoda Roomster
+      - type: entities
+        entities:
+          - entity: device_tracker.sinotrack_901
+            secondary_info: last-updated
+            name: ST-901
+            icon: mdi:crosshairs-gps
+          - type: attribute
+            entity: device_tracker.sinotrack_901
+            attribute: status
+            name: Status
+            icon: mdi:check-circle-outline
+          - type: attribute
+            entity: device_tracker.sinotrack_901
+            attribute: motion
+            name: Motion
+            icon: mdi:motion-sensor
+          - type: attribute
+            entity: device_tracker.sinotrack_901
+            attribute: speed
+            name: Speed
+            icon: mdi:speedometer
+          - type: attribute
+            entity: device_tracker.sinotrack_901
+            attribute: gps_accuracy
+            name: GPS accuracy
+            icon: mdi:signal-distance-variant
+          - type: attribute
+            entity: device_tracker.sinotrack_901
+            attribute: address
+            name: Adres
+            icon: mdi:map-check
+        state_color: true
+        title: SinoTrack ST-901
+      - type: entities
+        entities:
+          - entity: person.kacper
+            icon: mdi:human-male
+            secondary_info: last-updated
+          - entity: sensor.pixel_4a_geocoded_location
+            secondary_info: last-updated
+          - entity: person.martyna
+          - entity: sensor.iphone_geocoded_location
+          - entity: device_tracker.sinotrack_901
+            name: SinoTrack 901
+            secondary_info: none
+          - entity: device_tracker.s20
+            name: Škoda Roomster
+        state_color: true
+        show_header_toggle: false
+      - entities:
+          - entity: sensor.s20_battery
+        hours_to_show: 336
+        points_per_hour: 6
+        type: custom:mini-graph-card
+      - type: history-graph
+        entities:
+          - entity: sensor.s20_alarm
+        hours_to_show: 24
+        refresh_interval: 10
+      - type: history-graph
+        entities:
+          - entity: sensor.s20_battery
+        hours_to_show: 336
+  - theme: Backend-selected
+    path: motion
+    icon: mdi:motion-sensor
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+      - user: 6671076d5dbe4f13a4891444e801d1da
+    badges: []
+    cards:
+      - type: history-graph
+        entities:
+          - entity: binary_sensor.bathroom_motion_occupancy
+          - entity: binary_sensor.0x70ac08fffe342e96_presence
+        hours_to_show: 1
+      - type: history-graph
+        entities:
+          - entity: sensor.0x70ac08fffe342e96_target_distance
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.bathroom_occupancy_target_distance
+      - type: entities
+        entities:
+          - entity: light.bathroom
+          - entity: binary_sensor.bathroom_motion_occupancy
+          - entity: binary_sensor.bathroom_occupancy_presence
+          - entity: sensor.bathroom_occupancy_target_distance
+  - theme: Backend-selected
+    icon: mdi:overscan
+    path: panel
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+      - user: 6671076d5dbe4f13a4891444e801d1da
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: binary_sensor.nspanel_ac_plugged
+            name: AC Plugged
+          - entity: binary_sensor.nspanel_charging
+            name: Charging
+          - entity: sensor.nspanel_light
+            name: Light
+          - entity: binary_sensor.nspanel_usb_plugged
+            name: USB Plugged
+          - entity: sensor.nspanel_battery_level
+        title: NSPanel Pro
+        state_color: true
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: sensor.nspanelblue_currentpage
+            name: Currentpage
+          - entity: sensor.nspanelblue_display_target_temperature
+            name: Display Target Temperature
+          - entity: sensor.nspanelblue_last_click
+            name: Last Click
+          - entity: sensor.nspanelblue_last_click_climatesettings
+            name: Last click climatesettings
+          - entity: sensor.nspanelblue_last_click_coversettings
+            name: Last click coversettings
+          - entity: sensor.nspanelblue_last_click_lightsettings
+            name: Last click lightsettings
+          - entity: sensor.nspanelblue_notification_label
+            name: Notification Label
+          - entity: sensor.nspanelblue_notification_text
+            name: Notification Text
+          - entity: sensor.nspanelblue_temperature
+            name: Temperature
+          - entity: binary_sensor.nspanelblue_left_button
+            name: Left Button
+          - entity: binary_sensor.nspanelblue_right_button
+            name: Right Button
+          - entity: light.nspanelblue_relay_1
+          - entity: light.nspanelblue_relay_2
+        state_color: true
+      - type: entities
+        entities:
+          - entity: switch.nspanelblue_confirmation_message
+            name: Confirmation Message
+          - entity: number.nspanelblue_display_brightness
+            name: Display Brightness
+          - entity: number.nspanelblue_display_brightness_dimdown
+            name: Display Brightness Dimdown
+          - entity: switch.nspanelblue_nextion_inited
+            name: Nextion inited
+          - entity: switch.nspanelblue_notification_sound
+            name: Notification sound
+          - entity: switch.nspanelblue_notification_unread
+            name: Notification unread
+          - entity: button.nspanelblue_restart
+            name: Restart
+          - entity: switch.nspanelblue_sleep_modus
+            name: Sleep Modus
+          - entity: number.nspanelblue_temperature_correction
+            name: Temperature Correction
+          - entity: switch.nspanelblue_update_tft_display
+            name: Update TFT display
+        state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.nspanelblue_esphome_version
+            name: ESPhome Version
+          - entity: sensor.nspanelblue_ip
+            name: IP
+          - entity: sensor.nspanelblue_rssi
+            name: RSSI
+          - entity: sensor.nspanelblue_uptime
+            name: Uptime
+        state_color: true
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.nspanel_play_rtttl
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.nspanel_notify
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.android_notify
+      - type: thermostat
+        entity: climate.thermostat
+      - type: humidifier
+        entity: humidifier.hygrostat
+  - theme: Backend-selected
+    path: rs485
+    icon: mdi:serial-port
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+      - user: 6671076d5dbe4f13a4891444e801d1da
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.link_quality_2
+          - entity: binary_sensor.status_2
+          - entity: sensor.ultrasonic_sensor
+          - entity: sensor.tasmota_sr04_distance
+      - color_thresholds:
+          - color: '#10A5F5'
+            value: 20
+          - color: '#008000'
+            value: 50
+          - color: '#FFFF00'
+            value: 100
+          - color: '#FF0000'
+            value: 200
+        entities:
+          - entity: sensor.ultrasonic_sensor
+        hours_to_show: 0.25
+        points_per_hour: 7200
+        type: custom:mini-graph-card
+      - color_thresholds:
+          - color: '#10A5F5'
+            value: 20
+          - color: '#008000'
+            value: 50
+          - color: '#FFFF00'
+            value: 100
+          - color: '#FF0000'
+            value: 200
+        entities:
+          - entity: sensor.tasmota_sr04_distance
+        hours_to_show: 0.25
+        points_per_hour: 7200
+        type: custom:mini-graph-card
+      - type: entities
+        entities:
+          - entity: binary_sensor.esp_sofar_status
+          - entity: sensor.esp_sofar_uptime
+          - entity: sensor.ikea_link_quality
+            name: Link quality
+          - entity: switch.esp_sofar_restart
+        title: Status
+        state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.sofarsolar_ac_current_total
+          - entity: sensor.sofarsolar_ac_freq
+          - entity: sensor.sofarsolar_ac_power
+          - entity: sensor.sofarsolar_ac_reactive_power
+          - entity: sensor.sofarsolar_bus_voltage
+          - entity: sensor.sofarsolar_dc_current_total
+          - entity: sensor.sofarsolar_dc_power_total
+          - entity: sensor.sofarsolar_energy_generation_time_today
+          - entity: sensor.sofarsolar_energy_generation_time_total
+          - entity: sensor.sofarsolar_energy_today
+          - entity: sensor.sofarsolar_energy_total
+        title: Statistics
+        state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.sofarsolar_dc1_current
+          - entity: sensor.sofarsolar_dc1_power
+          - entity: sensor.sofarsolar_dc1_voltage
+          - entity: sensor.sofarsolar_dc2_current
+          - entity: sensor.sofarsolar_dc2_power
+          - entity: sensor.sofarsolar_dc2_voltage
+          - entity: sensor.sofarsolar_l1_current
+          - entity: sensor.sofarsolar_l1_voltage
+          - entity: sensor.sofarsolar_l2_current
+          - entity: sensor.sofarsolar_l2_voltage
+          - entity: sensor.sofarsolar_l3_current
+          - entity: sensor.sofarsolar_l3_voltage
+          - entity: sensor.sofarsolar_pv_isolation_resistance
+          - entity: sensor.sofarsolar_pv1_isolation_resistance
+          - entity: sensor.sofarsolar_pv2_isolation_resistance
+        title: Measurments
+        state_color: true
+      - type: entities
+        entities:
+          - entity: sensor.esp_sofar_heapsize
+          - entity: sensor.esp_sofar_uptime_human_readable
+          - entity: sensor.esp_sofar_wifi_signal_human_readable
+          - entity: sensor.sofarsolar_fault_message
+          - entity: sensor.sofarsolar_status
+          - entity: sensor.sofarsolar_temprature_inverter
+          - entity: sensor.sofarsolar_temprature_module
+        title: Inverter
+        state_color: true
+  - theme: Backend-selected
+    title: Test
+    path: test
+    icon: mdi:camera-timer
+    visible:
+      - user: 7eb85c051f964a0b93f83aa8f7a4e559
+      - user: 6671076d5dbe4f13a4891444e801d1da
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - type: buttons
+            entities:
+              - entity: light.bathroom
+                name: nazwa
+                icon: mdi:lightbulb
+              - entity: light.kitchen_led
+              - entity: lock.sienkiewicza
+              - entity: media_player.android_tv_192_168_1_77
+              - entity: vacuum.roborock_s5
+          - type: divider
+          - type: cast
+            view: weather
+            name: required NubuCasa
+          - type: section
+          - type: weblink
+            url: www.google.pl
+            new_tab: true
+        title: Buttons ( ), Divider --, Cast [ ], Section --
+        header:
+          image: >-
+            https://www.home-assistant.io/images/dashboards/header-footer/balloons-header.png
+          type: picture
+      - type: tile
+        entity: media_player.android_tv_192_168_1_77
+        show_entity_picture: false
+      - type: tile
+        entity: lock.sienkiewicza
+        show_entity_picture: true
+      - features:
+          - type: vacuum-commands
+            commands:
+              - start_pause
+              - stop
+              - return_home
+              - clean_spot
+        type: tile
+        entity: vacuum.roborock_s5
+        show_entity_picture: true
+      - type: entities
+        entities:
+          - type: conditional
+            conditions:
+              - entity: plant.zigbeeflora
+                state: Problem
+            row:
+              entity: plant.zigbeeflora
+              type: attribute
+              attribute: problem
+        title: Conditional
+        state_color: true
+      - type: entities
+        entities:
+          - entity: binary_sensor.mi_flora
+          - entity: sensor.mi_flora_rssi
+          - entity: sensor.mi_flora_brightness
+          - entity: sensor.mi_flora_moisture
+          - entity: sensor.mi_flora_soil
+          - entity: sensor.mi_flora_temperature
+          - type: divider
+          - entity: binary_sensor.mi_scale
+          - entity: sensor.mi_scale_rssi
+          - entity: sensor.mi_scale_impedance
+          - entity: sensor.mi_scale_weight
+          - type: divider
+          - entity: sensor.xiaomi_ble_linkquality
+        title: Xiaomi BLE Gateway
+        state_color: true
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: number.bathroom_occupancy_fading_time
+          - entity: sensor.bathroom_occupancy_illuminance_lux
+          - entity: number.bathroom_occupancy_radar_sensitivity
+          - entity: sensor.bathroom_occupancy_target_distance
+          - entity: binary_sensor.bathroom_occupancy_presence
+          - entity: binary_sensor.bathroom_motion_occupancy
+          - entity: light.bathroom
+        state_color: true
+        show_header_toggle: false
+      - type: history-graph
+        entities:
+          - entity: binary_sensor.bathroom_motion_occupancy
+            name: PIR
+          - entity: binary_sensor.0x70ac08fffe342e96_presence
+            name: mW
+        refresh_interval: 1
+        hours_to_show: 1
+      - type: entities
+        entities:
+          - entity: binary_sensor.mi_lamp
+          - entity: sensor.mi_light_idle_time_2
+          - entity: sensor.mi_light_illuminance_2
+          - entity: binary_sensor.mi_light_status_2
+          - entity: binary_sensor.mi_night_light_2
+          - entity: binary_sensor.mi_temp
+          - entity: sensor.mi_temp_humidity
+          - entity: sensor.mi_temp_temperature
+          - entity: sensor.xiaomi_rozana_linkquality
+          - entity: switch.rozana_restart
+        title: xiaomi-temp
+        state_color: true
+        show_header_toggle: false
+      - type: grid
+        square: false
+        columns: 1
+        cards:
+          - type: entities
+            entities:
+              - sensor.mail_amazon_packages
+              - sensor.mail_dhl_packages
+              - sensor.mail_dpd_com_pl_packages
+              - sensor.mail_gls_packages
+              - sensor.mail_inpost_pl_delivered
+              - sensor.mail_inpost_pl_delivering
+            title: Imap.gmail.com
+          - type: picture-entity
+            entity: camera.mail_amazon_delivery_camera
+          - type: picture-entity
+            entity: camera.mail_usps_camera
+      - type: custom:flipdown-timer-card
+        show_error: false
+        show_title: false
+        name: timer bramy
+        entity: timer.gate
+        theme: dark
+  - theme: Backend-selected
+    icon: mdi:webcam
+    path: cameras
+    badges: []
+    cards:
+      - square: true
+        columns: 1
+        type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: binary_sensor.yi_hack_a_cdc5df_baby_crying
+              - entity: binary_sensor.yi_hack_a_cdc5df_motion_detection
+              - entity: binary_sensor.yi_hack_a_cdc5df_sound_detection
+              - entity: binary_sensor.yi_hack_a_cdc5df_status
+              - entity: switch.yi_hack_a_cdc5df_privacy
+            title: Yi Home
+            state_color: true
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            entity: camera.yi_hack_a_cdc5df_cam
+            name: Yi hack
+            camera_image: camera.yi_hack_a_cdc5df_cam
+          - show_state: true
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.yi_hack_a_cdc5df_motion_detection_cam
+            name: Motion
+            camera_image: camera.yi_hack_a_cdc5df_motion_detection_cam
+      - type: custom:webrtc-camera
+        entity: camera.yi_hack_a_cdc5df_cam
+      - type: custom:webrtc-camera
+        entity: camera.yi_dome_sub
+      - type: custom:webrtc-camera
+        entity: camera.yi_dome
+  - theme: Backend-selected
+    path: camera
+    icon: mdi:webcam
+    badges: []
+    cards:
+      - type: custom:webrtc-camera
+        entity: camera.yi_hack_a_cdc5df_cam
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: binary_sensor.yi_hack_a_cdc5df_motion_detection
+            show_state: true
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: call-service
+              service: yi_hack.ptz
+              data:
+                entity_id: camera.yi_dome_cam
+                movement: up
+              target: {}
+            icon: mdi:arrow-up-bold
+            show_state: false
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: binary_sensor.yi_hack_a_cdc5df_status
+            show_state: true
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: call-service
+              service: yi_hack.ptz
+              data:
+                movement: left
+                entity_id: camera.yi_dome_motion_detection_cam
+              target: {}
+            icon: mdi:arrow-left-bold
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: switch.yi_hack_a_cdc5df_privacy
+            show_state: false
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            hold_action:
+              action: call-service
+              service: yi_hack.ptz
+              data:
+                entity_id: camera.yi_dome_cam
+                movement: right
+              target: {}
+            icon: mdi:arrow-right-bold
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            show_state: true
+            entity: binary_sensor.yi_hack_a_cdc5df_sound_detection
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: call-service
+              service: yi_hack.ptz
+              data:
+                entity_id: camera.yi_dome_cam
+                movement: down
+              target: {}
+            icon: mdi:arrow-down-bold
+            show_state: false
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: binary_sensor.yi_hack_a_cdc5df_baby_crying
+            show_state: true
+      - square: true
+        columns: 1
+        type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: binary_sensor.yi_hack_a_cdc5df_baby_crying
+              - entity: binary_sensor.yi_hack_a_cdc5df_motion_detection
+              - entity: binary_sensor.yi_hack_a_cdc5df_sound_detection
+              - entity: binary_sensor.yi_hack_a_cdc5df_status
+              - entity: switch.yi_hack_a_cdc5df_privacy
+            title: Yi Home
+            state_color: true
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            entity: camera.yi_hack_a_cdc5df_cam
+            name: Yi hack
+            camera_image: camera.yi_hack_a_cdc5df_cam
+          - show_state: true
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.yi_hack_a_cdc5df_motion_detection_cam
+            name: Motion
+            camera_image: camera.yi_hack_a_cdc5df_motion_detection_cam
+      - show_state: true
+        show_name: true
+        camera_view: live
+        type: picture-entity
+        image: https://demo.home-assistant.io/stub_config/bedroom.png
+        entity: camera.yi_hack_a_cdc5df_cam
